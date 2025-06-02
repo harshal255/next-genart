@@ -6,7 +6,7 @@ import { apiClient } from "@/lib/client-api";
 import { IUser } from "@/lib/types";
 import Modal from "@/portal/modal";
 import { useRouter } from "next/navigation";
-import React, { createContext, useState, ReactNode, useEffect, useRef } from "react";
+import React, { createContext, useState, ReactNode, useEffect, useRef, useMemo, useCallback } from "react";
 import { toast } from "react-toastify";
 import Cookies from 'js-cookie';
 
@@ -50,7 +50,7 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ props: { initia
   const router = useRouter();
   const backendTabRef = useRef<Window | null>(null);
 
-  const loadCreditsData = async () => {
+  const loadCreditsData = useCallback(async () => {
     try {
       const res: any = await apiClient.loadCreditData(token!);
       if (res.success) {
@@ -58,20 +58,18 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ props: { initia
         setCredit(data.credits);
         setUser(data.user);
       }
-
     } catch (error: any) {
       toast.error(error.message);
     }
-  }
+  }, [token]);
 
-  const logout = () => {
-    // localStorage.removeItem('token');
+  const logout = useCallback(() => {
     Cookies.remove('token');
     setToken('');
     setUser(null);
-  }
+  }, []);
 
-  const generateImage = async (prompt: string) => {
+  const generateImage = useCallback(async (prompt: string) => {
     try {
       const res: any = await apiClient.generateImage(prompt, token!);
       const { data } = res;
@@ -89,7 +87,7 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ props: { initia
     } catch (error: any) {
       toast.error(error.message);
     }
-  }
+  }, [token, loadCreditsData, router]);
 
   const checkServerWakeUp = async () => {
     const res: any = await fetch(config.server_url);
@@ -100,7 +98,7 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ props: { initia
     }
   }
 
-  const value = {
+  const value = useMemo(() => ({
     user,
     setUser,
     showLogin,
@@ -112,25 +110,39 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ props: { initia
     loadCreditsData,
     logout,
     generateImage,
+  }), [
+    user,
+    setUser,
+    showLogin,
+    setShowLogin,
+    token,
+    setToken,
+    credit,
+    setCredit,
+    loadCreditsData,
+    logout,
+    generateImage,
+  ]);
 
-  };
 
   //This line runs immediately when the component initializes — before React has a chance to fully load the browser environment or run effects. At that point, localStorage may still be undefined (especially during hydration).
   //✅ The Right Way: Delay Access with useEffect
   useEffect(() => {
-    // const storedToken = localStorage.getItem("token");
-    // const storedToken = Cookies.get("token") || null;
     const alreadyWakeUp = sessionStorage.getItem("wakeup-server");
-    // if (storedToken) {
-    //   setToken(storedToken);
-    // }
+    let backendTab: Window | null = null;
+
     if (!alreadyWakeUp) {
-      const backendTab = window.open(config.server_url, '_blank');
+      backendTab = window.open(config.server_url, '_blank');
       if (backendTab) {
         backendTabRef.current = backendTab; // Store the reference
         checkServerWakeUp();
       }
     }
+    return () => {
+      if (backendTab && !backendTab.closed) {
+        backendTab.close(); // Close the tab when component unmounts
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -141,10 +153,14 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ props: { initia
 
   useEffect(() => {
     if (backendTabRef.current && wakeupServer) {
-      setTimeout(() => {
-        backendTabRef.current?.close(); // Close the backend tab
-        backendTabRef.current = null;   // Clean up the reference
-      }, 3000); // Optional delay
+      const timeoutId = setTimeout(() => {
+        backendTabRef.current?.close();
+        backendTabRef.current = null;
+      }, 3000);
+
+      return () => {
+        clearTimeout(timeoutId); // Clear timeout if effect re-runs or unmounts
+      };
     }
   }, [wakeupServer]);
 

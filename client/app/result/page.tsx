@@ -1,14 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React, { FormEvent, useContext, useState } from "react";
-import { assets } from "@/app/assets";
 import { motion } from "framer-motion";
 import Loader from "@/components/Loader";
 import { AppContext } from "@/context/AppContext";
 import Image from "next/image";
-
+import sampleImg from "@/public/assets/sample_img_6.png";
 
 const Result = () => {
-  const [image, setImage] = useState(assets.sample_img_6);
+  const [image, setImage] = useState<any>(sampleImg);
   const [isImageLoaded, setisImageLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
@@ -46,6 +46,7 @@ const Result = () => {
               alt="Responsive image"
               priority
               fill
+              placeholder="blur"
               className="object-cover rounded-lg"
             />
           </div>
