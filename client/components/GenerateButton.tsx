@@ -5,12 +5,13 @@ import { assets } from "@/app/assets";
 import { motion } from 'framer-motion'
 import { useRouter } from "next/navigation";
 import { AppContext } from "@/context/AppContext";
+import Image from "next/image";
 
 
 const GenerateButton = () => {
   const { user, setShowLogin } = useContext(AppContext)!;
   const router = useRouter();
-  
+
   const onClickHandler = () => {
     if (user) {
       router.push("/result");
@@ -34,7 +35,12 @@ const GenerateButton = () => {
         onClick={onClickHandler}
       >
         Generate Images
-        <img src={assets.star_group} alt="" className="h-6" />
+        <Image
+          width={25}
+          height={6}
+          loading="lazy"
+          quality={10}
+          src={assets.star_group} alt="" className="h-6" />
       </button>
     </motion.div>
   );

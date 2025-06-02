@@ -3,6 +3,7 @@
 import React from "react";
 import { assets, testimonialsData } from "@/app/assets";
 import { motion } from 'framer-motion'
+import Image from "next/image";
 
 const Testimonials = () => {
   return (
@@ -24,9 +25,13 @@ const Testimonials = () => {
             className="bg-white/20 p-12 rounded-lg shadow-md w-80 m-auto cursor-pointer hover:scale-[1.02] transition-all duration-300"
           >
             <div className="flex flex-col items-center ">
-              <img
+              <Image
                 src={testimonial.image}
-                alt=""
+                alt="User"
+                width={56}
+                height={56}
+                quality={50}
+                loading="lazy"
                 className="rounded-full w-14"
               />
               <h2>{testimonial.name}</h2>
@@ -35,10 +40,14 @@ const Testimonials = () => {
                 {Array(testimonial.stars)
                   .fill(" ")
                   .map((_, starIndex) => (
-                    <img
+                    <Image
                       src={assets.rating_star}
+                      alt="Rating Star"
+                      width={16} 
+                      height={16}
+                      quality={50}
+                      loading="lazy"
                       key={`star-${index}-${starIndex}`}
-                      alt=""
                     />
                   ))}
               </div>

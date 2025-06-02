@@ -4,6 +4,7 @@
 import React from "react";
 import { stepsData } from "@/app/assets";
 import { motion } from "framer-motion"
+import Image from "next/image";
 
 
 const Steps = () => {
@@ -24,7 +25,14 @@ const Steps = () => {
             key={index}
             className="flex items-center gap-4 p-5 px-8 bg-white rounded-lg shadow-md cursor-pointer hover:scale-[1.02] transition-all duration-300"
           >
-            <img src={item.icon} alt="" width={40} height={40} />
+            <Image
+              src={item.icon}
+              alt="Item Icon"
+              width={40}
+              height={40}
+              quality={50}
+              loading="lazy"
+            />
             <div>
               <h2
                 className="text-cl font-med

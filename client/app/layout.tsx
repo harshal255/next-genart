@@ -4,7 +4,7 @@ import "./globals.css";
 import AppContextProvider from "@/context/AppContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Script from "next/script";
 import { cookies } from "next/headers";
@@ -37,7 +37,7 @@ export default async function RootLayout({
       }
 
     } catch (error: any) {
-      toast.error(error.message);
+      console.log(error.message);
     }
   }
 

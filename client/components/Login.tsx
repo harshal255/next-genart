@@ -9,6 +9,7 @@ import { AppContext } from "@/context/AppContext";
 import { apiClient } from "@/lib/client-api";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 const Login = () => {
   const [state, setstate] = useState("Login");
@@ -92,7 +93,15 @@ const Login = () => {
         <div className="flex items-center justify-center flex-col">
           {state !== "Login" && (
             <div className="border px-6  flex items-center gap-2 rounded-full mt-5">
-              <img src={assets.profile_icon} alt="" width={35} />
+
+              <Image
+                src={assets.profile_icon}
+                alt="Profile Icon"
+                width={35}
+                height={35}
+                quality={50}
+                loading="lazy"
+              />
               <input
                 onChange={(e) => setName(e.target.value)}
                 value={name}
@@ -104,7 +113,14 @@ const Login = () => {
             </div>
           )}
           <div className="border px-6 py-2 flex items-center gap-2 rounded-full mt-5">
-            <img src={assets.email_icon} alt="" width={19} />
+            <Image
+              src={assets.email_icon}
+              alt="Email Icon"
+              width={19}
+              height={19}
+              quality={50}
+              loading="lazy"
+            />
             <input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -115,7 +131,14 @@ const Login = () => {
             />
           </div>
           <div className="border px-6  flex items-center gap-2 rounded-full py-2 mt-5">
-            <img src={assets.lock_icon} alt="" width={15} />
+            <Image
+              src={assets.lock_icon}
+              alt="Lock Icon"
+              width={15}
+              height={15}
+              quality={50}
+              loading="lazy"
+            />
             <input
               onChange={(e) => setPassword(e.target.value)}
               value={password}
@@ -152,7 +175,11 @@ const Login = () => {
                   Login
                 </span>
               </p>
-              <img
+              <Image
+                width={24}
+                height={24}
+                quality={50}
+                loading="lazy"
                 onClick={() => setShowLogin(false)}
                 src={assets.cross_icon}
                 alt=""
@@ -171,10 +198,14 @@ const Login = () => {
                   Sign up
                 </span>
               </p>
-              <img
-                onClick={() => setShowLogin(false)}
+              <Image
                 src={assets.cross_icon}
-                alt=""
+                alt="Close"
+                width={24}
+                height={24}
+                quality={50}
+                loading="lazy"
+                onClick={() => setShowLogin(false)}
                 className="absolute top-5 right-5 cursor-pointer"
               />
             </div>

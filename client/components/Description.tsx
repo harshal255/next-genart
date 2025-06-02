@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 import React from "react";
 import { assets } from "@/app/assets";
 import { motion } from "framer-motion"
+import Image from "next/image";
 
 
 const Description = () => {
@@ -19,9 +19,13 @@ const Description = () => {
       <p className="text-gray-500 mb-8">Turn your imagination into visuals</p>
 
       <div className="flex flex-col gap-5 md:gap-14 md:flex-row items-center">
-        <img
+        <Image
           src={assets.sample_img_3}
           alt=""
+          width={400}
+          height={400}
+          quality={85}
+          loading="lazy"
           className="w-80 xl:w-96 rounded-lg"
         />
         <div>

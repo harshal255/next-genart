@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useContext } from "react";
 import { plans } from "@/app/assets";
@@ -79,7 +78,6 @@ const BuyCredit = () => {
             key={index}
             className="bg-white drop-shadow-sm rounded-lg py-12 px-8 text-gray-600 hover:scale-105 transition-all duration-500"
           >
-            {/* <img src={assets.logo_icon} alt="" width={40} /> */}
             <p className="mt-3 mb-1 font-semibold">{item.id}</p>
             <p className="text-sm">{item.desc}</p>
             <p className="mt-6">

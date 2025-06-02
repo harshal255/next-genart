@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { FormEvent, useContext, useState } from "react";
 import { assets } from "@/app/assets";
 import { motion } from "framer-motion";
 import Loader from "@/components/Loader";
 import { AppContext } from "@/context/AppContext";
+import Image from "next/image";
 
 
 const Result = () => {
@@ -40,7 +40,15 @@ const Result = () => {
     >
       <div>
         <div className="relative">
-          <img src={image} alt="" className="max-w-sm rounded" />
+          <div className="relative w-64 h-64 sm:w-[400px] sm:h-[400px]">
+            <Image
+              src={image}
+              alt="Responsive image"
+              priority
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
           <span
             className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r from-pink-500 to-violet-500
               transition-all  ${loading ? "w-full duration-[10s]" : "w-0 duration-[0s]"
@@ -52,8 +60,6 @@ const Result = () => {
         )}
 
       </div>
-
-      <p>Generate Another</p>
       {!isImageLoaded && (
         <div className="flex flex-col w-full max-w-xl bg-neutral-50 text-gray-800 rounded-xl text-sm mt-10 border p-3">
           <textarea

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { assets } from "@/app/assets";
 import { AppContext } from "@/context/AppContext";
 import { useRouter } from 'next/navigation'
+import Image from "next/image";
 
 const Header = () => {
   const { user, setShowLogin } = useContext(AppContext)!;
@@ -16,7 +17,7 @@ const Header = () => {
       setShowLogin(true);
     }
   };
-  
+
   return (
     <div>
       <motion.div
@@ -33,7 +34,12 @@ const Header = () => {
           className="text-stone-500 inline-flex items-center gap-2 bg-white px-6 py-1 rounded-full border border-neutral-500"
         >
           <p>Best prompt to image generator</p>
-          <img src={assets.star_icon} alt="" />
+          <Image
+            src={assets.star_icon}
+            alt="Star icon"
+            width={16}
+            height={16}
+          />
         </motion.div>
         <motion.h1
           initial={{ opacity: 0 }}
@@ -65,7 +71,12 @@ const Header = () => {
           onClick={onClickHandler}
         >
           Generate images
-          <img src={assets.star_group} alt="" className="h-6" />
+          <Image
+            src={assets.star_group}
+            alt="Star group"
+            width={20}
+            height={20}
+          />
         </motion.button>
 
         <div>
@@ -73,14 +84,19 @@ const Header = () => {
             {Array(6)
               .fill(" ")
               .map((items, index) => (
-                <img
-                  src={
-                    index % 3 === 0 ? assets.sample_img_4 : index % 3 === 2 ? assets.sample_img_5 : assets.sample_img_3
-                  }
-                  alt=""
+                <Image
                   key={index}
+                  src={
+                    index % 3 === 0
+                      ? assets.sample_img_4
+                      : index % 3 === 2
+                        ? assets.sample_img_5
+                        : assets.sample_img_3
+                  }
+                  alt="" 
                   width={70}
                   height={70}
+                  quality={50}
                   className="rounded hover:scale-105 transition-all duration-300 cursor-pointer max-sm:w-10"
                 />
               ))}
