@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
 
 /* Apply Outfit font to all sans-serif utilities */
 :root {
-  --font-sans: 'Outfit', sans-serif;
+  --font-sans: var(--font-outfit);
 }
 
 html,
@@ -12,9 +11,10 @@ body,
   height: 100%;
 }
 
-.logo{
+.logo {
   cursor: pointer;
 }
+
 :root {
   --toastify-color-light: #fff;
   --toastify-color-dark: #121212;
@@ -23,9 +23,9 @@ body,
   --toastify-color-warning: #f1c40f;
   --toastify-color-error: #e74c3c;
   --toastify-color-transparent: rgba(255,
-  255,
-  255,
-  .7);
+      255,
+      255,
+      .7);
   --toastify-icon-color-info: var(--toastify-color-info);
   --toastify-icon-color-success: var(--toastify-color-success);
   --toastify-icon-color-warning: var(--toastify-color-warning);
@@ -33,13 +33,13 @@ body,
   --toastify-toast-width: 320px;
   --toastify-toast-offset: 16px;
   --toastify-toast-top: max(var(--toastify-toast-offset),
-  env(safe-area-inset-top));
+      env(safe-area-inset-top));
   --toastify-toast-right: max(var(--toastify-toast-offset),
-  env(safe-area-inset-right));
+      env(safe-area-inset-right));
   --toastify-toast-left: max(var(--toastify-toast-offset),
-  env(safe-area-inset-left));
+      env(safe-area-inset-left));
   --toastify-toast-bottom: max(var(--toastify-toast-offset),
-  env(safe-area-inset-bottom));
+      env(safe-area-inset-bottom));
   --toastify-toast-background: #fff;
   --toastify-toast-min-height: 64px;
   --toastify-toast-max-height: 800px;
@@ -54,13 +54,13 @@ body,
   --toastify-text-color-error: #fff;
   --toastify-spinner-color: #616161;
   --toastify-spinner-color-empty-area: #e0e0e0;
-  --toastify-color-progress-light: linear-gradient( to right,
-  #4cd964,
-  #5ac8fa,
-  #007aff,
-  #34aadc,
-  #5856d6,
-  #ff2d55 );
+  --toastify-color-progress-light: linear-gradient(to right,
+      #4cd964,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55);
   --toastify-color-progress-dark: #bb86fc;
   --toastify-color-progress-info: var(--toastify-color-info);
   --toastify-color-progress-success: var(--toastify-color-success);
@@ -71,5 +71,5 @@ body,
 
 button,
 [role=button] {
-  cursor:pointer
+  cursor: pointer
 }

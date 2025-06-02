@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Script from "next/script";
 import { cookies } from "next/headers";
 import { apiClient } from "@/lib/client-api";
-
+import { outfit } from '@/app/ui/fonts';
 
 export const metadata: Metadata = {
   title: "Next GenArt",
@@ -42,9 +42,9 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" className={outfit.variable}>
       <body
-        className={`antialiased`}
+        className={`antialiased font-sans`}
       >
         <AppContextProvider props={{ initialToken, initialUser, initialCredit }}>
           <div className="relative min-h-screen overflow-x-hidden">
