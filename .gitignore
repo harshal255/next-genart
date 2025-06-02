@@ -1,0 +1,14 @@
+# Client
+client/.env
+client/.next/
+client/out/
+
+# Server
+server/.env
+server/node_modules/
+server/dist/
+
+# Universal
+**/.DS_Store
+**/node_modules/
+**/*.log
