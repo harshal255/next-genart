@@ -27,7 +27,9 @@ const Description = () => {
           quality={85}
           loading="lazy"
           className="w-80 xl:w-96 rounded-lg"
+          sizes="(max-width: 640px) 320px, (max-width: 1280px) 400px, 480px"
         />
+
         <div>
           <h2 className="text-3xl font-medium max-w-lg mb-4">
             Introducing the AI powered Text to Image Generator

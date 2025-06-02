@@ -21,11 +21,10 @@ const Header = () => {
   return (
     <div>
       <motion.div
-        initial={{ opacity: 0.2, y: 100 }}
-        transition={{ duration: 0.8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="flex flex-col justify-center items-center text-center my-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="flex flex-col justify-center items-center text-center my-20 min-h-[500px]"
       >
         <motion.div
           initial={{ opacity: 0.2, y: -20 }}
@@ -45,7 +44,7 @@ const Header = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 1 }}
-          className="text-4xl max-w-[1000px] sm:text-7xl sm:test-7xl sm:max-w-[590px] mx-auto mt-10 text-center"
+          className="text-4xl max-w-[1000px] sm:text-7xl sm:max-w-[590px] mx-auto mt-10 text-center"
         >
           Turn Prompt to <span className="text-[#b235ff]">Image</span>, in seconds.
         </motion.h1>
@@ -93,7 +92,7 @@ const Header = () => {
                         ? assets.sample_img_5
                         : assets.sample_img_3
                   }
-                  alt="" 
+                  alt=""
                   width={70}
                   height={70}
                   quality={50}

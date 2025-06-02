@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browserslist": [
+    "defaults and supports es6-module"
+  ],
   "dependencies": {
     "@types/js-cookie": "^3.0.6",
     "@types/react-icons": "^2.2.7",

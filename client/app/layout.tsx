@@ -6,7 +6,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Script from "next/script";
 import { cookies } from "next/headers";
 import { apiClient } from "@/lib/client-api";
 import { outfit } from '@/app/ui/fonts';
@@ -86,7 +85,6 @@ export default async function RootLayout({
 
         </AppContextProvider>
       </body>
-      <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
     </html>
   );
 }
