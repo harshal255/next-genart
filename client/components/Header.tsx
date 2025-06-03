@@ -20,16 +20,8 @@ const Header = () => {
 
   return (
     <div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="flex flex-col justify-center items-center text-center my-20 min-h-[500px]"
-      >
-        <motion.div
-          initial={{ opacity: 0.2, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+      <div className="fade-in-up flex flex-col justify-center items-center text-center my-20 min-h-[500px]">
+        <div
           className="text-stone-500 inline-flex items-center gap-2 bg-white px-6 py-1 rounded-full border border-neutral-500"
         >
           <p>Best prompt to image generator</p>
@@ -39,19 +31,14 @@ const Header = () => {
             width={16}
             height={16}
           />
-        </motion.div>
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 1 }}
-          className="text-4xl max-w-[1000px] sm:text-7xl sm:max-w-[590px] mx-auto mt-10 text-center"
-        >
+        </div>
+        <h1 className="text-4xl max-w-[1000px] sm:text-7xl sm:max-w-[590px] mx-auto mt-10 text-center">
           Turn Prompt to <span className="text-[#b235ff]">Image</span>, in seconds.
-        </motion.h1>
+        </h1>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+          transition={{ delay: 0.1, duration: 0.8 }}
           className="mt-5 text-center max-w-xl mx-auto"
         >
           Unleash your creativity with AI. Turn your imagination into visual art
@@ -64,7 +51,7 @@ const Header = () => {
           animate={{ opacity: 1 }}
           transition={{
             default: { duration: 0.5 },
-            opacity: { delay: 0.8, duration: 0.8 },
+            opacity: { delay: 0.2, duration: 0.8 },
           }}
           className="sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex items-center gap-2 rounded-full"
           onClick={onClickHandler}
@@ -102,7 +89,7 @@ const Header = () => {
           </div>
           <p className="mt-2 text-neutral-600">Generated images from Next GenArt</p>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };
