@@ -15,26 +15,32 @@ const Footer = () => {
           href="https://github.com/harshal255"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-gray-700 cursor-pointer transition-transform duration-200 hover:scale-110 hover:text-purple-700"
+          aria-label="GitHub profile"
+          className="text-xl text-gray-700 hover:text-black transition-transform duration-200"
         >
           <FaGithub />
         </a>
+
         <a
           href="https://twitter.com/harshalkahar389"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-gray-700 cursor-pointer transition-transform duration-200 hover:scale-110 hover:text-purple-700"
+          aria-label="Twitter profile"
+          className="text-xl text-gray-700 hover:text-black transition-transform duration-200"
         >
           <FaTwitter />
         </a>
+
         <a
           href="https://www.linkedin.com/in/harshal-kahar-4115a321b/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xl text-gray-700 cursor-pointer transition-transform duration-200 hover:scale-110 hover:text-purple-700"
+          aria-label="LinkedIn profile"
+          className="text-xl text-gray-700 hover:text-black transition-transform duration-200"
         >
           <FaLinkedin />
         </a>
+
       </div>
     </div>
   );

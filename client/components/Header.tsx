@@ -53,7 +53,7 @@ const Header = () => {
             default: { duration: 0.5 },
             opacity: { delay: 0.2, duration: 0.8 },
           }}
-          className="sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex items-center gap-2 rounded-full"
+          className="w-auto mt-8 px-12 py-2.5 inline-flex items-center gap-2  rounded-full bg-black text-white text-sm sm:text-base font-medium hover:bg-gray-900 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white"
           onClick={onClickHandler}
         >
           Generate images
