@@ -20,7 +20,7 @@ const Description = () => {
 
       <div className="flex flex-col gap-5 md:gap-14 md:flex-row items-center">
         <Image
-          src={assets.sample_img_3}
+          src={assets.sample_img_5}
           alt=""
           width={400}
           height={400}

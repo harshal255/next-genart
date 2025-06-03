@@ -67,6 +67,7 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({ props: { initia
     Cookies.remove('token');
     setToken('');
     setUser(null);
+    router.push("/");
   }, []);
 
   const generateImage = useCallback(async (prompt: string) => {

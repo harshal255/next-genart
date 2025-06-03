@@ -76,8 +76,8 @@ const Header = () => {
                     index % 3 === 0
                       ? assets.sample_img_4
                       : index % 3 === 2
-                        ? assets.sample_img_5
-                        : assets.sample_img_3
+                        ? assets.sample_img_3
+                        : assets.sample_img_2
                   }
                   alt=""
                   width={70}

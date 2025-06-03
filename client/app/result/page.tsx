@@ -46,7 +46,6 @@ const Result = () => {
               alt="Responsive image"
               priority
               fill
-              placeholder="blur"
               className="object-cover rounded-lg"
             />
           </div>
